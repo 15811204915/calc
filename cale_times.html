@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<title>加速计算工具</title>
+
+<script>
+function setNull(obj){
+	if(obj.value==''){
+		obj.value=0;
+	}
+}
+function toHourMinute(minutes){
+	var date = Math.floor(minutes/1440);
+	var mins = minutes-date*1440;
+	var times = "";
+	if(date<=0){
+		times =  "0天"+(Math.floor(mins/60) + "小时" + (mins%60) + "分" );
+	}else{
+		times = date+"天"+(Math.floor(mins/60) + "小时" + (mins%60) + "分" );
+	}
+	
+	return times;
+}
+function caleMin(arrs){
+	var mins=0;	
+	for(var i = 0 ; i < arrs.length ; i++){
+		if(arrs[i].value!=''){
+			mins += (Number(arrs[i].value)*Number(arrs[i].id))
+		}
+	}
+	return mins;
+}
+function showResult(){
+	var yanfa_arr = document.getElementsByName("yanfa");
+	var yanfa_min = caleMin(yanfa_arr);
+	var tongyong_arr = document.getElementsByName("tongyong");
+	var tongyong_min = caleMin(tongyong_arr);
+	
+	document.getElementById("yanfa_str").innerHTML=toHourMinute(yanfa_min);
+	document.getElementById("tongyong_str").innerHTML=toHourMinute(tongyong_min);
+}
+</script>
+<style>
+.text{
+	height:25px;
+	margin:3px 0px;	
+	border-radius:3px;
+	font-size:20px;
+	color:#f9320c;
+	border:1px gray solid;
+	padding-left:2px;
+	width:70%;
+}
+.title{
+	text-align:right;
+	padding-right:5px;	
+	color:#666;
+}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr style="height:40px; text-align:center;">
+    <td colspan="2"><B>研发加速</B></td>
+    <td colspan="2"><B>通用加速</B></td>
+  </tr>
+  <tr>
+    <td width="25%" class="title">5分钟(个)</td>
+    <td width="25%" align="left"><input id="5" name="yanfa" tabindex="100" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td width="25%" class="title">5分钟(个)</td>
+    <td width="25%"><input id="5" name="tongyong" tabindex="200" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">10分钟(个)</td>
+    <td><input id="10" name="yanfa" tabindex="101" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">10分钟(个)</td>
+    <td><input id="10" name="tongyong" tabindex="201" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">15分钟(个)</td>
+    <td><input id="15" name="yanfa" tabindex="102" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">15分钟(个)</td>
+    <td><input id="15" name="tongyong" tabindex="202" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">30分钟(个)</td>
+    <td><input id="30" name="yanfa" tabindex="103" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">30分钟(个)</td>
+    <td><input id="30"name="tongyong" tabindex="203" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">1小时(个)</td>
+    <td><input id="60" name="yanfa" tabindex="105" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">1小时(个)</td>
+    <td><input id="60" name="tongyong" tabindex="205" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">3小时(个)</td>
+    <td><input id="180" name="yanfa" tabindex="106" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">3小时(个)</td>
+    <td><input id="180" name="tongyong" tabindex="206" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">8小时(个)</td>
+    <td><input id="480" name="yanfa" tabindex="107" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">8小时(个)</td>
+    <td><input id="480" name="tongyong" tabindex="207" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">15小时(个)</td>
+    <td><input id="900" name="yanfa" tabindex="108" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">15小时(个)</td>
+    <td><input id="900" name="tongyong" tabindex="208" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">24小时(个)</td>
+    <td><input id="1440" name="yanfa" tabindex="109" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">24小时(个)</td>
+    <td><input id="1440" name="tongyong" tabindex="209" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">3天(个)</td>
+    <td><input id="4320" name="yanfa" tabindex="110" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">3天(个)</td>
+    <td><input id="4320" name="tongyong" tabindex="210" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr>
+    <td class="title">7天(个)</td>
+    <td><input id="10080" name="yanfa" tabindex="111" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+    <td class="title">7天(个)</td>
+    <td><input id="10080" name="tongyong" tabindex="211" class="text" maxlength="5" value="0" onBlur="setNull(this);" onFocus="this.value=''"/></td>
+  </tr>
+  <tr style="height:35px; text-align:center;">
+    <td colspan="2" id="yanfa_str" style="color:red;"></td>
+    <td colspan="2" id="tongyong_str" style="color:red;"></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="center"><input type="button" value="计算" onClick="showResult()" 
+    	style="width:60%;height:40px;border-radius:3px;border:0px; background-color:#f9c00c;color:#FFF;font-size:15px;" /></td>
+  </tr>
+</table>
+</body>
+</html>
